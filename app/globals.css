@@ -1,0 +1,309 @@
+@import "tailwindcss";
+
+/* ============================================================================
+   PALETTE DE COULEURS - Rose Poudré Doux et Apaisant
+   ============================================================================ */
+
+:root {
+  /* Couleurs de base */
+  --background: #faf8f6; /* Beige très clair, chaleureux */
+  --foreground: #5a4a4a; /* Gris-rose doux pour le texte principal */
+  
+  /* Palette de roses poudrés doux (un peu plus foncés mais toujours doux) */
+  --pink-50: #fef5f6;   /* Rose poudré très très clair */
+  --pink-100: #fce8eb;  /* Rose poudré très clair */
+  --pink-200: #f8d4da;  /* Rose poudré clair */
+  --pink-300: #f4c0c9;  /* Rose poudré moyen */
+  --pink-400: #f0acb8;  /* Rose poudré */
+  --pink-500: #ec98a7;  /* Rose poudré soutenu */
+  --pink-600: #e88496;  /* Rose poudré plus profond */
+  --pink-700: #e47085;  /* Rose poudré profond */
+  
+  /* Couleurs d'accent - Rose Poudré Doux (un peu plus foncé) */
+  --accent-soft: #f8d4da;    /* Rose poudré très doux */
+  --accent-medium: #e88496;  /* Rose poudré pour les boutons */
+  --accent-strong: #e88496;  /* Rose poudré soutenu pour les accents (corrigé pour cohérence) */
+  --accent-light: #fce8eb;   /* Rose poudré pour les fonds subtils */
+  
+  /* Couleurs pour les boutons - Design System */
+  --button-primary-bg: #cd808c;      /* Fond bouton primaire (rose foncé pour bon contraste) */
+  --button-primary-text: #ffffff;    /* Texte bouton primaire (blanc pur pour meilleur contraste) */
+  --button-primary-hover: #b86d7a;   /* Hover bouton primaire (plus foncé) */
+  --button-secondary-bg: #ffffff;                 /* Fond bouton secondaire */
+  --button-secondary-text: var(--accent-medium);  /* Texte bouton secondaire */
+  --button-secondary-border: var(--accent-soft);  /* Bordure bouton secondaire */
+  --button-secondary-hover-bg: var(--pink-50);     /* Hover fond bouton secondaire */
+  --button-secondary-hover-border: var(--accent-medium); /* Hover bordure bouton secondaire */
+  
+  /* Couleurs complémentaires - Lavande douce */
+  --lavender-50: #f8f7fc;
+  --lavender-100: #f0eef8;
+  --lavender-200: #e8e5f4;
+  --lavender-300: #d5cfe8;
+  
+  /* Couleurs beige chaleureux */
+  --beige-50: #faf8f6;
+  --beige-100: #f5f2ee;
+  --beige-200: #f0ebe6;
+  
+  /* Couleurs de texte */
+  --text-primary: #4a3a3a;    /* Texte principal - gris doux */
+  --text-secondary: #6a5a5a;  /* Texte secondaire */
+  --text-light: #8a7a7a;      /* Texte léger */
+  --text-on-accent: #ffffff;  /* Texte sur fond rose */
+  
+  /* Couleurs neutres */
+  --white: #ffffff;
+  --gray-50: #fafafa;
+  --gray-100: #f5f5f5;
+  --gray-200: #eeeeee;
+  
+  /* États */
+  --success: #c8e6c8;
+  --warning: #ffe8c8;
+  --error: #ffc8c8;
+}
+
+/* ============================================================================
+   STYLES GLOBAUX
+   ============================================================================ */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-poppins), system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: var(--background);
+  color: var(--text-primary);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ============================================================================
+   ANIMATIONS SUBTILES
+   ============================================================================ */
+
+/* Animation fade-in douce */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Animation float douce pour les éléments décoratifs */
+@keyframes gentleFloat {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+/* Animation pulse très subtile */
+@keyframes gentlePulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.85;
+  }
+}
+
+/* Animation de vague douce */
+@keyframes wave {
+  0%, 100% {
+    transform: translateX(0) translateY(0);
+  }
+  50% {
+    transform: translateX(-10px) translateY(-5px);
+  }
+}
+
+/* Classes utilitaires pour les animations */
+.animate-fade-in {
+  animation: fadeIn 0.6s ease-out;
+}
+
+.animate-gentle-float {
+  animation: gentleFloat 3s ease-in-out infinite;
+}
+
+.animate-gentle-pulse {
+  animation: gentlePulse 2s ease-in-out infinite;
+}
+
+.animate-wave {
+  animation: wave 4s ease-in-out infinite;
+}
+
+/* ============================================================================
+   TRANSITIONS DOUCES
+   ============================================================================ */
+
+/* Transitions douces pour les interactions */
+a, button {
+  transition-property: color, background-color, border-color, transform, opacity;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 200ms;
+}
+
+/* ============================================================================
+   STYLES DE BASE
+   ============================================================================ */
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-playfair), serif;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--text-primary);
+}
+
+h1 {
+  font-size: 2.5rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+h2 {
+  font-size: 2rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+p {
+  margin: 0;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  font-family: var(--font-poppins), sans-serif;
+}
+
+a {
+  color: var(--accent-strong);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--pink-700);
+}
+
+/* Focus visible pour l'accessibilité */
+*:focus-visible {
+  outline: 2px solid var(--accent-medium);
+  outline-offset: 2px;
+}
+
+/* Éléments décoratifs globaux */
+.decorative-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(40px);
+  opacity: 0.3;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.decorative-blob-1 {
+  width: 300px;
+  height: 300px;
+  background: var(--pink-300);
+  top: -100px;
+  right: -100px;
+}
+
+.decorative-blob-2 {
+  width: 250px;
+  height: 250px;
+  background: var(--lavender-300);
+  bottom: -50px;
+  left: -50px;
+}
+
+/* Styles spécifiques pour les boutons */
+a[href="/signup"],
+button.primary-button {
+  color: #ffffff !important;
+}
+
+/* ============================================================================
+   TYPOGRAPHIE RAFFINÉE
+   ============================================================================ */
+
+/* Styles pour les sections */
+.section-title {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 300;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+.section-subtitle {
+  font-size: clamp(1.125rem, 2vw, 1.5rem);
+  font-weight: 300;
+  letter-spacing: 0.01em;
+  line-height: 1.6;
+}
+
+/* Courbes décoratives */
+.curve-divider {
+  position: absolute;
+  width: 100%;
+  height: 100px;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.curve-divider svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* Animation shimmer pour la barre */
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.animate-shimmer {
+  animation: shimmer 2s infinite;
+}
+
+@keyframes slideIn {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+/* Animation scroll reveal pour les cartes du dashboard */
+.card-scroll-reveal {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.card-scroll-reveal.card-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
