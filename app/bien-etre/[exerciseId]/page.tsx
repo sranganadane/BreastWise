@@ -414,7 +414,7 @@ function GratitudeExercise({ exercise }: { exercise: typeof exercises[string] })
 }
 
 // Composant pour exercices de grounding (5 sens)
-function GroundingExercise({ exercise }: { exercise: typeof exercises[string] }) {
+function GroundingExercise({ exerciseId, exercise }: { exerciseId: string; exercise: typeof exercises[string] }) {
   const [currentStep, setCurrentStep] = useState(0);
   const [answers, setAnswers] = useState<Record<number, string[]>>({
     0: [], // 5 choses vues
@@ -442,7 +442,7 @@ function GroundingExercise({ exercise }: { exercise: typeof exercises[string] })
     }
   };
 
-  if (exercise.id === 'ground-5-sens') {
+  if (exerciseId === 'ground-5-sens') {
     return (
       <>
         <div className="flex flex-col items-center gap-6">
@@ -579,8 +579,8 @@ export default function ExercisePage() {
         {isGuided && <GuidedExercise exercise={exercise} />}
         {isCreative && <CreativeExercise exerciseId={exerciseId} exercise={exercise} />}
         {isGratitude && <GratitudeExercise exercise={exercise} />}
-        {isGrounding && <GroundingExercise exercise={exercise} />}
-        {isApaisement && exercise.id === 'apais-auto-compassion' && (
+        {isGrounding && <GroundingExercise exerciseId={exerciseId} exercise={exercise} />}
+        {isApaisement && exerciseId === 'apais-auto-compassion' && (
           <div className="flex flex-col items-center gap-6">
             <div className="text-6xl mb-4">{exercise.emoji}</div>
             <div className="bg-[var(--pink-50)]/60 border border-[var(--pink-200)]/50 rounded-xl p-6 max-w-md">
